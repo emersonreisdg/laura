@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>Conversa de Líder | Desenvolvimento Estratégico | Laura Moutinho</title>
-    <meta name="description" content="Mentoria e consultoria estratégica para líderes que buscam clareza, autoridade e resultados reais. Transforme sua gestão corporativa com Laura Mouttinho.">
+    <meta name="description" content="Mentoria e consultoria estratégica para líderes que buscam clareza, autoridade e resultados reais. Transforme sua gestão corporativa com Laura Moutinho.">
     <meta name="author" content="Emerson Reis">
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://emersonreisdg.github.io/laura/">
-    <meta property="og:title" content="Conversa de Líder | Desenvolvimento Estratégico">
-    <meta property="og:description" content="Domine a arte de liderar e converta esforço em lucro real. Mentorias personalizadas para executivos de alto nível.">
+    <meta property="og:title" content="Conversa de Líder | Desenvolvimento Estratégico | Laura Moutinho">
+    <meta property="og:description" content="Domine a arte de liderar e converta esforço em lucro real. Mentorias personalizadas para executivos de alto nível com Laura Moutinho.">
     <meta property="og:image" content="https://emersonreisdg.github.io/laura/foto.jpeg">
 
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -20,9 +20,10 @@
 
     <style>
         /* =========================================
-           1. SISTEMA DE DESIGN (VARIÁVEIS)
+           1. SISTEMA DE DESIGN (VARIÁVEIS FLUIDAS)
            ========================================= */
         :root {
+            /* Cores Corporativas */
             --primary-blue: #0B1F3A;
             --dark-deep: #020617;
             --accent-gold: #C8A24A;
@@ -32,11 +33,13 @@
             --bg-light: #F7F7F7;
             --white: #FFFFFF;
             
+            /* Layout e Espaçamento */
             --max-width: 1100px;
             --transition: 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             --radius: 12px;
             --shadow: 0 10px 30px rgba(0,0,0,0.08);
 
+            /* Tipografia Fluida (clamp) */
             --h1-fluid: clamp(2.2rem, 5vw + 1rem, 3.5rem);
             --h2-fluid: clamp(1.8rem, 3vw + 1rem, 2.5rem);
             --p-fluid: clamp(1rem, 1vw + 0.5rem, 1.2rem);
@@ -44,7 +47,7 @@
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; font-size: 100%; }
 
         body {
             font-family: 'Segoe UI', system-ui, sans-serif;
@@ -55,7 +58,7 @@
         }
 
         /* =========================================
-           2. ANIMAÇÕES (REVEAL)
+           2. ANIMAÇÕES (REVEAL ON SCROLL)
            ========================================= */
         .reveal {
             opacity: 0;
@@ -67,7 +70,7 @@
         .reveal-delay-2 { transition-delay: 0.2s; }
 
         /* =========================================
-           3. HEADER (NAV & LOGO)
+           3. CABEÇALHO (LOGO E MENU)
            ========================================= */
         .main-header {
             background: var(--primary-blue);
@@ -87,15 +90,17 @@
             gap: 15px;
         }
 
+        /* Lógica do Logo Reativo */
         .logo-link { display: flex; align-items: center; text-decoration: none; }
         .logo { 
             height: 70px; 
             transition: 0.4s ease;
-            filter: brightness(0) invert(1);
+            filter: brightness(0) invert(1); /* Modo Negativo */
             opacity: 0.95;
         }
         .logo-link:hover .logo { filter: none; opacity: 1; transform: scale(1.02); }
 
+        /* Navegação */
         .main-nav ul { display: flex; list-style: none; gap: 30px; }
         .main-nav a {
             text-decoration: none;
@@ -105,12 +110,13 @@
         }
         .main-nav a:hover { color: var(--accent-gold); }
 
+        /* Redes Sociais */
         .header-social { display: flex; gap: 15px; align-items: center; }
         .header-social a { color: rgba(255,255,255,0.6); font-size: 1.4rem; transition: 0.3s; }
         .header-social a:hover { color: var(--accent-gold); transform: translateY(-3px); }
 
         /* =========================================
-           4. SEÇÕES
+           4. SEÇÕES E COMPONENTES
            ========================================= */
         .container { width: 90%; max-width: var(--max-width); margin: 0 auto; }
         .section-padding { padding: var(--section-padding-fluid); }
@@ -125,6 +131,8 @@
             font-weight: bold;
             transition: 0.3s ease;
             text-align: center;
+            border: none;
+            cursor: pointer;
         }
         .btn:hover {
             background: var(--accent-hover);
@@ -148,6 +156,7 @@
             gap: 30px;
         }
 
+        /* Hero */
         .hero { display: flex; align-items: center; min-height: calc(85vh - 70px); gap: 60px; padding: 60px 0; }
         .hero-text { flex: 1.2; }
         .hero-text h1 { font-size: var(--h1-fluid); line-height: 1.1; color: var(--primary-blue); margin-bottom: 1.5rem; }
@@ -162,10 +171,12 @@
             box-shadow: 20px 20px 0 var(--accent-gold);
         }
 
+        /* Seção Escura de Contato */
         .section-dark { background: var(--primary-blue); color: var(--white); text-align: center; }
-        .contact-info { margin-top: 25px; font-size: 1.1rem; }
+        .contact-info { margin-top: 25px; font-size: 1.1rem; margin-bottom: 30px;}
         .contact-info a { color: var(--accent-gold); text-decoration: none; font-weight: bold; }
 
+        /* Footer */
         footer { 
             background: var(--dark-deep); 
             color: rgba(255,255,255,0.5); 
@@ -176,10 +187,13 @@
         footer a { color: var(--accent-gold); text-decoration: none; transition: 0.3s; }
         footer a:hover { text-decoration: underline; }
 
+        /* =========================================
+           5. RESPONSIVIDADE (MOBILE FLUIDO)
+           ========================================= */
         @media (max-width: 992px) {
-            .header-content { flex-direction: column; padding: 15px 0; }
+            .header-content { flex-direction: column; padding: 15px 0; gap: 10px; }
             .logo { height: 55px; }
-            .hero { flex-direction: column; text-align: center; }
+            .hero { flex-direction: column; text-align: center; gap: 40px; padding: 40px 0; }
             .hero-image { order: -1; }
             .btn { width: 100%; }
         }
@@ -190,7 +204,7 @@
 
     <header class="main-header">
         <div class="container header-content">
-            <a href="#" class="logo-link">
+            <a href="#" class="logo-link" title="Voltar ao início">
                 <img src="logo.png" alt="Conversa de Líder" class="logo">
             </a>
             <nav class="main-nav">
@@ -212,17 +226,17 @@
         <section class="container hero">
             <div class="hero-text reveal">
                 <h1>Liderança que <strong>converte esforço</strong> em lucro.</h1>
-                <p>Consultoria estratégica para executivos que desejam dominar a gestão real do negócio.</p>
+                <p>Consultoria estratégica para executivos que desejam dominar a gestão real do negócio com Laura Moutinho.</p>
                 <a href="https://wa.me/5531989501504?text=Olá!%20Vi%20o%20site%20Conversa%20de%20Líder%20e%20gostaria%20de%20agendar%20um%20diagnóstico." target="_blank" class="btn">Agendar Conversa <i class="fas fa-calendar-alt"></i></a>
             </div>
             <div class="hero-image reveal reveal-delay-2">
-                <img src="foto.jpeg" alt="Laura Mouttinho - Conversa de Líder">
+                <img src="foto.jpeg" alt="Laura Moutinho - Especialista em Liderança Corporativa">
             </div>
         </section>
 
         <section id="pilares" class="section-padding">
-            <div class="container">
-                <h2 style="text-align: center; margin-bottom: 50px; font-size: var(--h2-fluid); color: var(--primary-blue);">O que você vai desenvolver</h2>
+            <div class="container fluid-text-section">
+                <h2 class="reveal" style="text-align: center; margin-bottom: 50px; color: var(--primary-blue); font-size: var(--h2-fluid);">O que você vai desenvolver</h2>
                 <div class="grid-auto">
                     <div class="card reveal reveal-delay-1">
                         <h3>Liderança</h3>
@@ -240,16 +254,16 @@
             </div>
         </section>
 
-        <section class="section-padding section-dark">
+        <section class="section-padding section-dark fluid-text-section">
             <div class="container reveal">
-                <h2 style="font-size: var(--h2-fluid);">Saia do operacional confuso.</h2>
+                <h2>Saia do operacional confuso.</h2>
                 <p style="max-width: 700px; margin: 20px auto 0; font-size: var(--p-fluid);">Assuma o controle estratégico e lidere com propósito e eficiência corporativa.</p>
             </div>
         </section>
 
         <section id="metodo" class="section-padding">
-            <div class="container">
-                <h2 style="text-align: center; margin-bottom: 50px; font-size: var(--h2-fluid); color: var(--primary-blue);">Nosso Método</h2>
+            <div class="container fluid-text-section">
+                <h2 class="reveal" style="text-align: center; margin-bottom: 50px; color: var(--primary-blue); font-size: var(--h2-fluid);">Nosso Método</h2>
                 <div class="grid-auto">
                     <div class="card reveal reveal-delay-1">
                         <h3>1. Diagnóstico</h3>
@@ -270,10 +284,10 @@
         <section id="contato" class="section-padding" style="background: var(--accent-gold); text-align: center;">
             <div class="container reveal">
                 <h2 style="color: var(--dark-deep); font-size: var(--h2-fluid); margin-bottom: 20px;">Pronto para o próximo nível?</h2>
-                <p style="color: var(--dark-deep); font-size: var(--p-fluid); margin-bottom: 10px; font-weight: 500;">Fale diretamente com Laura Mouttinho:</p>
+                <p style="color: var(--dark-deep); font-size: var(--p-fluid); margin-bottom: 10px; font-weight: 500;">Fale diretamente com Laura Moutinho:</p>
                 
-                <div class="contact-info" style="margin-bottom: 30px;">
-                    <a href="mailto:conversalider@gmail.com" style="color: var(--primary-blue);"><i class="fas fa-envelope"></i> lauragomms@gmail.com</a>
+                <div class="contact-info">
+                    <a href="mailto:conversalider@gmail.com" style="color: var(--primary-blue);"><i class="fas fa-envelope"></i> conversalider@gmail.com</a>
                 </div>
 
                 <a href="https://wa.me/5531989501504?text=Olá!%20Vi%20o%20site%20Conversa%20de%20Líder%20e%20gostaria%20de%20agendar%20um%20diagnóstico." target="_blank" class="btn" style="background: var(--primary-blue);">Chamar no WhatsApp <i class="fab fa-whatsapp"></i></a>
@@ -291,11 +305,15 @@
     <script>
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('active');
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
             });
         }, { threshold: 0.15 });
 
-        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+        document.querySelectorAll('.reveal').forEach((el) => {
+            observer.observe(el);
+        });
     </script>
 
 </body>
