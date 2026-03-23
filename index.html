@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversa de Líder | Desenvolvimento Estratégico</title>
+    
+    <style>
+        /* =========================================
+           1. VARIÁVEIS E BASE (MODULAR)
+           ========================================= */
+        :root {
+            --primary-blue: #0B1F3A;
+            --dark-deep: #020617;
+            --accent-gold: #C8A24A;
+            --accent-hover: #b08d3a;
+            --text-main: #1A1A1A;
+            --text-light: #555555;
+            --bg-light: #F7F7F7;
+            --white: #FFFFFF;
+            
+            --max-width: 1100px;
+            --transition: 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --radius: 12px;
+            --shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* =========================================
+           2. ANIMAÇÕES (CSS REVEAL)
+           ========================================= */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity var(--transition), transform var(--transition);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Atraso em cascata para os cards */
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+
+        /* =========================================
+           3. LAYOUT E COMPONENTES
+           ========================================= */
+        .container {
+            width: 90%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .section-padding { padding: 100px 0; }
+
+        .main-header {
+            background: var(--primary-blue);
+            padding: 1rem 0;
+            width: 100%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo { height: 45px; }
+
+        .btn {
+            display: inline-block;
+            background: var(--accent-gold);
+            color: var(--white);
+            padding: 16px 35px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s ease;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(200, 162, 74, 0.3);
+        }
+
+        .card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: var(--radius);
+            border-left: 6px solid var(--accent-gold);
+            box-shadow: var(--shadow);
+        }
+
+        .grid-auto {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+
+        /* Hero */
+        .hero {
+            display: flex;
+            align-items: center;
+            min-height: 80vh;
+            gap: 60px;
+            padding: 60px 0;
+        }
+
+        .hero-text { flex: 1.2; }
+        .hero-text h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem; color: var(--primary-blue); }
+        .hero-text h1 strong { color: var(--accent-gold); }
+        .hero-text p { font-size: 1.25rem; color: var(--text-light); margin-bottom: 2.5rem; }
+
+        .hero-image { flex: 0.8; position: relative; }
+        .hero-image img {
+            width: 100%;
+            border-radius: var(--radius);
+            box-shadow: 25px 25px 0 var(--accent-gold);
+        }
+
+        /* Seção Escura */
+        .section-dark {
+            background: var(--primary-blue);
+            color: var(--white);
+            text-align: center;
+        }
+
+        footer {
+            background: var(--dark-deep);
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        /* =========================================
+           4. RESPONSIVIDADE (MOBILE)
+           ========================================= */
+        @media (max-width: 992px) {
+            .hero { flex-direction: column; text-align: center; padding: 40px 0; }
+            .hero-text h1 { font-size: 2.5rem; }
+            .hero-image { order: -1; margin-bottom: 40px; }
+            .hero-image img { max-width: 300px; box-shadow: 15px 15px 0 var(--accent-gold); }
+            .section-padding { padding: 60px 0; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 { font-size: 2rem; }
+            .btn { width: 100%; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="main-header">
+        <div class="container header-content">
+            <img src="logo.png" alt="Conversa de Líder" class="logo">
+        </div>
+    </header>
+
+    <main>
+        <section class="container hero">
+            <div class="hero-text reveal">
+                <h1>Liderança que <strong>converte esforço</strong> em lucro.</h1>
+                <p>Consultoria estratégica para quem cansou do operacional e quer dominar a gestão real do negócio.</p>
+                <a href="#" class="btn">Quero agendar uma conversa</a>
+            </div>
+            <div class="hero-image reveal reveal-delay-2">
+                <img src="foto.jpg" alt="Mentoria Conversa de Líder">
+            </div>
+        </section>
+
+        <section class="section-padding">
+            <div class="container">
+                <h2 class="reveal" style="text-align: center; margin-bottom: 60px; font-size: 2.2rem;">Pilares do Desenvolvimento</h2>
+                <div class="grid-auto">
+                    <div class="card reveal reveal-delay-1">
+                        <h3>Liderança</h3>
+                        <p>Domine a arte de delegar e cobrar resultados sem perder a autoridade.</p>
+                    </div>
+                    <div class="card reveal reveal-delay-2">
+                        <h3>Estratégia</h3>
+                        <p>Saia do "achismo" e tome decisões baseadas em dados e visão de futuro.</p>
+                    </div>
+                    <div class="card reveal reveal-delay-3">
+                        <h3>Cultura</h3>
+                        <p>Construa um time que trabalha pelo seu negócio, não apenas pelo salário.</p>
+                    </div>
+                    <div class="card reveal reveal-delay-4">
+                        <h3>Resultados</h3>
+                        <p>Escalabilidade real com processos que funcionam sem você precisar estar presente.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding section-dark">
+            <div class="container reveal">
+                <h2 style="margin-bottom: 20px;">Não é apenas uma mentoria.</h2>
+                <p style="max-width: 800px; margin: 0 auto;">É a transferência de anos de experiência executiva aplicada diretamente no seu modelo de negócio atual.</p>
+            </div>
+        </section>
+
+        <section class="section-padding">
+            <div class="container">
+                <h2 class="reveal" style="text-align: center; margin-bottom: 60px; font-size: 2.2rem;">O Método</h2>
+                <div class="grid-auto">
+                    <div class="card reveal reveal-delay-1">
+                        <h3>Diagnóstico</h3>
+                        <p>Encontramos os gargalos invisíveis que travam sua empresa.</p>
+                    </div>
+                    <div class="card reveal reveal-delay-2">
+                        <h3>Plano de Ação</h3>
+                        <p>Um roteiro passo a passo do que deve ser feito e priorizado.</p>
+                    </div>
+                    <div class="card reveal reveal-delay-3">
+                        <h3>Implementação</h3>
+                        <p>Acompanhamento direto na linha de frente da execução.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding" style="background: var(--accent-gold); text-align: center;">
+            <div class="container reveal">
+                <h2 style="color: var(--dark-deep); margin-bottom: 15px;">A liderança começa com uma decisão.</h2>
+                <p style="color: var(--dark-deep); margin-bottom: 35px; font-weight: 500;">Dê o próximo passo na sua carreira ou empresa ainda hoje.</p>
+                <a href="#" class="btn" style="background: var(--primary-blue);">Falar com um especialista</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 - Conversa de Líder | Excelência Corporativa</p>
+        </div>
+    </footer>
+
+    <script>
+        const observerOptions = {
+            threshold: 0.15 // Ativa quando 15% do elemento aparece
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        // Seleciona todos os elementos com a classe .reveal para observar
+        document.querySelectorAll('.reveal').forEach((el) => {
+            observer.observe(el);
+        });
+    </script>
+
+</body>
+</html>
