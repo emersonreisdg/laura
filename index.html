@@ -14,7 +14,7 @@
     <meta property="og:description" content="Domine a arte de liderar e converta esforço em lucro real. Mentorias personalizadas para executivos de alto nível.">
     <meta property="og:image" content="https://emersonreisdg.github.io/laura/foto.jpeg">
 
-    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
@@ -23,7 +23,6 @@
            1. SISTEMA DE DESIGN (VARIÁVEIS FLUIDAS)
            ========================================= */
         :root {
-            /* Cores */
             --primary-blue: #0B1F3A;
             --dark-deep: #020617;
             --accent-gold: #C8A24A;
@@ -33,37 +32,31 @@
             --bg-light: #F7F7F7;
             --white: #FFFFFF;
             
-            /* Layout e Espaçamento */
             --max-width: 1100px;
             --transition: 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             --radius: 12px;
             --shadow: 0 10px 30px rgba(0,0,0,0.08);
 
             /* Tipografia Fluida (clamp) */
-            --font-size-base: 1rem; /* 16px */
-            --h1-fluid: clamp(2.2rem, 5vw + 1rem, 3.5rem); /* Mobile-First H1 */
-            --h2-fluid: clamp(1.8rem, 3vw + 1rem, 2.5rem); /* Mobile-First H2 */
-            --h3-fluid: clamp(1.3rem, 1.5vw + 0.8rem, 1.6rem);
+            --h1-fluid: clamp(2.2rem, 5vw + 1rem, 3.5rem);
+            --h2-fluid: clamp(1.8rem, 3vw + 1rem, 2.5rem);
             --p-fluid: clamp(1rem, 1vw + 0.5rem, 1.2rem);
-            
-            /* Padding Seção Fluido */
             --section-padding-fluid: clamp(60px, 8vmin, 100px) 0;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
-
-        html { scroll-behavior: smooth; font-size: 100%; } /* Define base de rem */
+        html { scroll-behavior: smooth; font-size: 100%; }
 
         body {
             font-family: 'Segoe UI', system-ui, sans-serif;
             background: var(--bg-light);
             color: var(--text-main);
             line-height: 1.6;
-            overflow-x: hidden; /* Evita rolagem horizontal acidental */
+            overflow-x: hidden;
         }
 
         /* =========================================
-           2. ANIMAÇÕES (REVEAL ON SCROLL)
+           2. ANIMAÇÕES (REVEAL)
            ========================================= */
         .reveal {
             opacity: 0;
@@ -71,25 +64,63 @@
             transition: opacity var(--transition), transform var(--transition);
         }
 
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
         .reveal-delay-1 { transition-delay: 0.1s; }
         .reveal-delay-2 { transition-delay: 0.2s; }
         .reveal-delay-3 { transition-delay: 0.3s; }
-        .reveal-delay-4 { transition-delay: 0.4s; }
 
         /* =========================================
-           3. LAYOUT GLOBAL E COMPONENTES
+           3. CABEÇALHO (LOGO E MENU)
            ========================================= */
-        .container {
-            width: 90%;
-            max-width: var(--max-width);
-            margin: 0 auto;
+        .main-header {
+            background: var(--primary-blue);
+            padding: 0.8rem 0;
+            width: 100%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo-link { display: flex; align-items: center; text-decoration: none; }
+        .logo { 
+            height: 70px; 
+            transition: 0.4s ease;
+            filter: brightness(0) invert(1); /* Modo Negativo */
+            opacity: 0.95;
+        }
+        .logo-link:hover .logo { 
+            filter: none; /* Cor Original */
+            opacity: 1;
+            transform: scale(1.02);
+        }
+
+        .main-nav ul { display: flex; list-style: none; gap: 30px; flex-wrap: wrap; justify-content: center; }
+        .main-nav a {
+            text-decoration: none;
+            color: rgba(255,255,255,0.8);
+            font-weight: 500;
+            transition: 0.3s;
+        }
+        .main-nav a:hover { color: var(--accent-gold); }
+
+        .header-social { display: flex; gap: 15px; align-items: center; }
+        .header-social a { color: rgba(255,255,255,0.6); font-size: 1.3rem; transition: 0.3s; }
+        .header-social a:hover { color: var(--accent-gold); transform: translateY(-2px); }
+
+        /* =========================================
+           4. CONTEÚDO E SEÇÕES
+           ========================================= */
+        .container { width: 90%; max-width: var(--max-width); margin: 0 auto; }
         .section-padding { padding: var(--section-padding-fluid); }
 
         .btn {
@@ -100,10 +131,8 @@
             text-decoration: none;
             border-radius: 8px;
             font-weight: bold;
-            font-size: 1rem;
             transition: 0.3s ease;
             text-align: center;
-            width: fit-content;
         }
         .btn:hover {
             background: var(--accent-hover);
@@ -120,131 +149,37 @@
             transition: 0.3s;
         }
         .card:hover { transform: translateY(-5px); }
-        .card h3 { font-size: var(--h3-fluid); margin-bottom: 15px; color: var(--primary-blue); }
-        .card p { font-size: 1rem; color: var(--text-light); }
 
-        /* Grid Inteligente e Responsivo */
         .grid-auto {
             display: grid;
-            /* Se adapta dinamicamente, sem quebrar em telas pequenas */
             grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
             gap: 30px;
         }
 
-        /* =========================================
-           4. CABEÇALHO (MENU E LOGO DINÂMICO)
-           ========================================= */
-        .main-header {
-            background: var(--primary-blue);
-            padding: 0.8rem 0; /* Padding compacto inicial */
-            width: 100%;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap; /* Permite quebrar linha em telas pequenas */
-            gap: 15px; /* Espaço entre itens quebrados */
-        }
-
-        /* Lógica do Logo Reativo e Maior */
-        .logo-link { display: flex; align-items: center; text-decoration: none; }
-        .logo { 
-            height: 70px; /* Grande no desktop */
-            width: auto;
-            transition: 0.4s ease;
-            /* Estado Inicial: Modo Negativo (Branco) */
-            filter: brightness(0) invert(1); 
-            opacity: 0.95;
-        }
-        .logo-link:hover .logo { 
-            /* Estado Hover: Volta à cor original (logo.png) */
-            filter: none; 
-            opacity: 1;
-            transform: scale(1.02);
-        }
-
-        /* Navegação */
-        .main-nav ul { display: flex; list-style: none; gap: 30px; flex-wrap: wrap; justify-content: center; }
-        .main-nav a {
-            text-decoration: none;
-            color: rgba(255,255,255,0.8);
-            font-weight: 500;
-            font-size: 1rem;
-            transition: 0.3s;
-        }
-        .main-nav a:hover { color: var(--accent-gold); }
-
-        /* Redes Sociais */
-        .header-social { display: flex; gap: 15px; align-items: center; }
-        .header-social a {
-            color: rgba(255,255,255,0.6);
-            font-size: 1.3rem;
-            transition: 0.3s;
-        }
-        .header-social a:hover { color: var(--accent-gold); transform: translateY(-2px); }
-
-        /* =========================================
-           5. SEÇÕES ESPECÍFICAS
-           ========================================= */
-        
-        /* Hero ( Design Side-by-Side Adaptável ) */
-        .hero {
-            display: flex;
-            align-items: center;
-            min-height: calc(85vh - 70px); /* Ajuste baseado no header */
-            gap: 60px;
-            padding: 60px 0;
-        }
+        .hero { display: flex; align-items: center; min-height: calc(85vh - 70px); gap: 60px; padding: 60px 0; }
         .hero-text { flex: 1.2; }
         .hero-text h1 { font-size: var(--h1-fluid); line-height: 1.1; color: var(--primary-blue); margin-bottom: 1.5rem; }
         .hero-text h1 strong { color: var(--accent-gold); }
         .hero-text p { font-size: var(--p-fluid); color: var(--text-light); margin-bottom: 2.5rem; }
 
-        .hero-image { flex: 0.8; position: relative; display: flex; justify-content: center;}
+        .hero-image { flex: 0.8; display: flex; justify-content: center; }
         .hero-image img {
             width: 100%;
             max-width: 400px;
             border-radius: var(--radius);
-            /* Sombra dourada adaptável baseada na sombra original de 20px */
             box-shadow: clamp(10px, 2vw, 20px) clamp(10px, 2vw, 20px) 0 var(--accent-gold);
         }
 
-        /* Seção de Texto Centrado */
-        .fluid-text-section h2 { font-size: var(--h2-fluid); margin-bottom: 50px; text-align: center; color: var(--primary-blue); }
-        
         .section-dark { background: var(--primary-blue); color: var(--white); text-align: center; }
-        .section-dark h2 { font-size: var(--h2-fluid); color: var(--white); }
 
         footer { background: var(--dark-deep); color: rgba(255,255,255,0.5); text-align: center; padding: 40px 0; }
-        footer p { font-size: 0.9rem; }
 
-        /* =========================================
-           6. RESPONSIVIDADE FLUIDA (MEDIA QUERIES)
-           ========================================= */
         @media (max-width: 992px) {
-            /* Header Compacto Mobile */
-            .header-content { flex-direction: column; text-align: center; padding: 15px 0; gap: 10px; }
-            .logo { height: 55px; } /* Ajuste de tamanho para telas menores */
-            .main-nav ul { gap: 20px; font-size: 0.9rem; }
-            
-            /* Hero Mobile */
-            .hero { flex-direction: column; text-align: center; gap: 40px; padding: 40px 0; }
-            .hero-image { order: -1; margin-bottom: 30px; } /* Imagem acima do texto no mobile */
-            .hero-image img { max-width: 280px; }
-            .btn { width: 100%; fit-content: none; } /* Botão largura total no mobile */
-        }
-
-        @media (max-width: 480px) {
-            /* Ajustes finos para celulares muito pequenos (iPhone SE, etc) */
-            .main-nav ul { gap: 15px; font-size: 0.85rem; }
-            .grid-auto { gap: 20px; }
-            .card { padding: 30px; }
+            .header-content { flex-direction: column; padding: 15px 0; }
+            .logo { height: 55px; }
+            .hero { flex-direction: column; text-align: center; }
+            .hero-image { order: -1; margin-bottom: 30px; }
+            .btn { width: 100%; }
         }
     </style>
 </head>
@@ -253,10 +188,9 @@
 
     <header class="main-header">
         <div class="container header-content">
-            <a href="#" class="logo-link" title="Voltar ao início">
+            <a href="#" class="logo-link">
                 <img src="logo.png" alt="Conversa de Líder" class="logo">
-            </a >
-
+            </a>
             <nav class="main-nav">
                 <ul>
                     <li><a href="#">Início</a></li>
@@ -265,10 +199,9 @@
                     <li><a href="#contato">Contato</a></li>
                 </ul>
             </nav>
-
             <div class="header-social">
-                <a href="#" target="_blank" title="Siga no Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" target="_blank" title="Conecte no LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
             </div>
         </div>
     </header>
@@ -281,13 +214,13 @@
                 <a href="#contato" class="btn">Agendar Conversa <i class="fas fa-calendar-alt"></i></a>
             </div>
             <div class="hero-image reveal reveal-delay-2">
-                <img src="foto.jpeg" alt="Emerson Reis - Consultor Conversa de Líder">
+                <img src="foto.jpeg" alt="Emerson Reis - Conversa de Líder">
             </div>
         </section>
 
-        <section id="pilares" class="section-padding fluid-text-section">
+        <section id="pilares" class="section-padding">
             <div class="container">
-                <h2 class="reveal">O que você vai desenvolver</h2>
+                <h2 style="text-align: center; margin-bottom: 50px; font-size: var(--h2-fluid);">O que você vai desenvolver</h2>
                 <div class="grid-auto">
                     <div class="card reveal reveal-delay-1">
                         <h3>Liderança</h3>
@@ -301,24 +234,20 @@
                         <h3>Cultura</h3>
                         <p>Alinhamento de valores e fortalecimento do time organizacional.</p>
                     </div>
-                    <div class="card reveal reveal-delay-4">
-                        <h3>Resultados</h3>
-                        <p>Foco total em resultados sustentáveis e mensuráveis.</p>
-                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="section-padding section-dark fluid-text-section">
+        <section class="section-padding section-dark">
             <div class="container reveal">
-                <h2>Saia do operacional confuso.</h2>
+                <h2 style="font-size: var(--h2-fluid);">Saia do operacional confuso.</h2>
                 <p style="max-width: 700px; margin: 20px auto 0; font-size: var(--p-fluid);">Assuma o controle estratégico e lidere com propósito e eficiência corporativa.</p>
             </div>
         </section>
 
-        <section id="metodo" class="section-padding fluid-text-section">
+        <section id="metodo" class="section-padding">
             <div class="container">
-                <h2 class="reveal">Nosso Método</h2>
+                <h2 style="text-align: center; margin-bottom: 50px; font-size: var(--h2-fluid);">Nosso Método</h2>
                 <div class="grid-auto">
                     <div class="card reveal reveal-delay-1">
                         <h3>1. Diagnóstico</h3>
@@ -336,11 +265,10 @@
             </div>
         </section>
 
-        <section id="contato" class="section-padding section-dark" style="background: var(--accent-gold); text-align: center;">
+        <section id="contato" class="section-padding" style="background: var(--accent-gold); text-align: center;">
             <div class="container reveal">
-                <h2 style="color: var(--dark-deep); margin-bottom: 20px;">Pronto para o próximo nível?</h2>
-                <p style="color: var(--dark-deep); font-size: var(--p-fluid); margin-bottom: 35px; font-weight: 500;">Dê o passo estratégico na sua carreira ou empresa ainda hoje.</p>
-                
+                <h2 style="color: var(--dark-deep); font-size: var(--h2-fluid); margin-bottom: 20px;">Pronto para o próximo nível?</h2>
+                <p style="color: var(--dark-deep); font-size: var(--p-fluid); margin-bottom: 35px; font-weight: 500;">Dê o passo estratégico na sua carreira hoje.</p>
                 <a href="https://wa.me/5599999999999" target="_blank" class="btn" style="background: var(--primary-blue);">Falar com um especialista <i class="fab fa-whatsapp"></i></a>
             </div>
         </section>
@@ -353,22 +281,13 @@
     </footer>
 
     <script>
-        const observerOptions = {
-            threshold: 0.15 // Ativa quando 15% do elemento aparece na tela
-        };
-
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('active');
             });
-        }, observerOptions);
+        }, { threshold: 0.15 });
 
-        // Seleciona todos os elementos com a classe .reveal para observar
-        document.querySelectorAll('.reveal').forEach((el) => {
-            observer.observe(el);
-        });
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
     </script>
 
 </body>
