@@ -71,7 +71,7 @@
 
         .section-padding { padding: 100px 0; }
 
-        /* HEADER ATUALIZADO COM MENU E REDES */
+        /* HEADER ATUALIZADO */
         .main-header {
             background: var(--primary-blue);
             padding: 1rem 0;
@@ -88,14 +88,27 @@
             align-items: center;
         }
 
-        /* Logo Link Home */
+        /* LÓGICA DO LOGO NEGATIVO/ORIGINAL */
         .logo-link {
             display: flex;
             align-items: center;
             text-decoration: none;
         }
-        .logo { height: 45px; transition: 0.3s; }
-        .logo-link:hover .logo { transform: scale(1.05); }
+        .logo { 
+            height: 45px; 
+            transition: 0.4s ease; /* Transição suave para a cor */
+            
+            /* Estado Inicial: Modo Negativo (Branco) */
+            filter: brightness(0) invert(1); 
+            opacity: 0.9;
+        }
+
+        /* Ao passar o mouse no Link, o Logo volta à cor original */
+        .logo-link:hover .logo { 
+            filter: none; /* Remove o filtro de branco */
+            opacity: 1;
+            transform: scale(1.03); /* Leve zoom */
+        }
 
         /* Menu Central */
         .main-nav ul {
@@ -203,7 +216,7 @@
         }
 
         /* =========================================
-           4. RESPONSIVIDADE (MOBILE) ATUALIZADA
+           4. RESPONSIVIDADE (MOBILE)
            ========================================= */
         @media (max-width: 992px) {
             .header-content { flex-direction: column; gap: 15px; text-align: center; padding: 10px 0; }
@@ -316,7 +329,8 @@
             <div class="container reveal">
                 <h2 style="color: var(--dark-deep); margin-bottom: 15px;">A liderança começa com uma decisão.</h2>
                 <p style="color: var(--dark-deep); margin-bottom: 35px; font-weight: 500;">Dê o próximo passo na sua carreira ou empresa ainda hoje.</p>
-                <a href="#" class="btn" style="background: var(--primary-blue);">Falar com um especialista</a>
+                
+                <a href="https://wa.me/5599999999999" target="_blank" class="btn" style="background: var(--primary-blue);">Falar com um especialista <i class="fab fa-whatsapp"></i></a>
             </div>
         </section>
     </main>
@@ -329,7 +343,7 @@
 
     <script>
         const observerOptions = {
-            threshold: 0.15 // Ativa quando 15% do elemento aparece
+            threshold: 0.15 
         };
 
         const observer = new IntersectionObserver((entries) => {
