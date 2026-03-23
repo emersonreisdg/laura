@@ -6,7 +6,7 @@
     
     <title>Conversa de Líder | Desenvolvimento Estratégico</title>
     <meta name="description" content="Mentoria e consultoria estratégica para líderes que buscam clareza, autoridade e resultados reais. Transforme sua gestão com Emerson Reis.">
-    <meta name="author" content="Emerson Reis">
+    <meta name="author" content="Bernado Martins">
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://emersonreisdg.github.io/laura/">
@@ -68,11 +68,11 @@
         .reveal-delay-4 { transition-delay: 0.4s; }
 
         /* =========================================
-           3. CABEÇALHO (MENU E LOGO)
+           3. CABEÇALHO (MENU E LOGO AMPLIADO)
            ========================================= */
         .main-header {
             background: var(--primary-blue);
-            padding: 1rem 0;
+            padding: 0.8rem 0; /* Padding reduzido para compensar logo maior */
             width: 100%;
             position: sticky;
             top: 0;
@@ -86,18 +86,18 @@
             align-items: center;
         }
 
-        /* Lógica do Logo Reativo */
+        /* Lógica do Logo Reativo e Maior */
         .logo-link { display: flex; align-items: center; text-decoration: none; }
         .logo { 
-            height: 45px; 
+            height: 70px; /* Aumentado de 45px para 70px */
             transition: 0.4s ease;
-            filter: brightness(0) invert(1); /* Modo Negativo */
-            opacity: 0.9;
+            filter: brightness(0) invert(1); /* Modo Negativo inicial */
+            opacity: 0.95;
         }
         .logo-link:hover .logo { 
-            filter: none; /* Cor Original */
+            filter: none; /* Volta à cor original (logo.png) */
             opacity: 1;
-            transform: scale(1.05);
+            transform: scale(1.02);
         }
 
         /* Navegação */
@@ -114,7 +114,7 @@
         .header-social { display: flex; gap: 15px; }
         .header-social a {
             color: rgba(255,255,255,0.6);
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             transition: 0.3s;
         }
         .header-social a:hover { color: var(--accent-gold); transform: translateY(-2px); }
@@ -185,7 +185,8 @@
            5. RESPONSIVIDADE (MOBILE)
            ========================================= */
         @media (max-width: 992px) {
-            .header-content { flex-direction: column; gap: 15px; padding: 10px 0; }
+            .header-content { flex-direction: column; gap: 15px; padding: 15px 0; }
+            .logo { height: 55px; } /* Ajuste de tamanho para telas menores */
             .hero { flex-direction: column; text-align: center; }
             .hero-image { order: -1; margin-bottom: 30px; }
             .hero-image img { max-width: 300px; }
@@ -213,8 +214,8 @@
             </nav>
 
             <div class="header-social">
-                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
             </div>
         </div>
     </header>
@@ -281,7 +282,7 @@
         <section id="contato" class="section-padding" style="background: var(--accent-gold); text-align: center;">
             <div class="container reveal">
                 <h2 style="color: var(--dark-deep); margin-bottom: 20px;">Pronto para o próximo nível?</h2>
-                <a href="https://wa.me/5599999999999" target="_blank" class="btn" style="background: var(--primary-blue);">Falar com um especialista <i class="fab fa-whatsapp"></i></a>
+                <a href="https://wa.me/5511999999999" target="_blank" class="btn" style="background: var(--primary-blue);">Falar com um especialista <i class="fab fa-whatsapp"></i></a>
             </div>
         </section>
     </main>
