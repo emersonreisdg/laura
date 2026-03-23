@@ -3,13 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conversa de Líder | Desenvolvimento Estratégico</title>
     
+    <title>Conversa de Líder | Desenvolvimento Estratégico</title>
+    <meta name="description" content="Mentoria e consultoria estratégica para líderes que buscam clareza, autoridade e resultados reais. Transforme sua gestão com Emerson Reis.">
+    <meta name="author" content="Emerson Reis">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://emersonreisdg.github.io/laura/">
+    <meta property="og:title" content="Conversa de Líder | Desenvolvimento Estratégico">
+    <meta property="og:description" content="Domine a arte de liderar e converta esforço em lucro real. Mentorias personalizadas para executivos.">
+    <meta property="og:image" content="https://emersonreisdg.github.io/laura/foto.jpeg">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
         /* =========================================
-           1. VARIÁVEIS E BASE (MODULAR)
+           1. SISTEMA DE DESIGN (VARIÁVEIS)
            ========================================= */
         :root {
             --primary-blue: #0B1F3A;
@@ -29,9 +38,7 @@
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        html {
-            scroll-behavior: smooth; /* Deslizamento suave ao clicar no menu */
-        }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Segoe UI', system-ui, sans-serif;
@@ -42,7 +49,7 @@
         }
 
         /* =========================================
-           2. ANIMAÇÕES (CSS REVEAL)
+           2. ANIMAÇÕES (REVEAL ON SCROLL)
            ========================================= */
         .reveal {
             opacity: 0;
@@ -61,17 +68,8 @@
         .reveal-delay-4 { transition-delay: 0.4s; }
 
         /* =========================================
-           3. LAYOUT E COMPONENTES
+           3. CABEÇALHO (MENU E LOGO)
            ========================================= */
-        .container {
-            width: 90%;
-            max-width: var(--max-width);
-            margin: 0 auto;
-        }
-
-        .section-padding { padding: 100px 0; }
-
-        /* HEADER ATUALIZADO */
         .main-header {
             background: var(--primary-blue);
             padding: 1rem 0;
@@ -88,63 +86,45 @@
             align-items: center;
         }
 
-        /* LÓGICA DO LOGO NEGATIVO/ORIGINAL */
-        .logo-link {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-        }
+        /* Lógica do Logo Reativo */
+        .logo-link { display: flex; align-items: center; text-decoration: none; }
         .logo { 
             height: 45px; 
-            transition: 0.4s ease; /* Transição suave para a cor */
-            
-            /* Estado Inicial: Modo Negativo (Branco) */
-            filter: brightness(0) invert(1); 
+            transition: 0.4s ease;
+            filter: brightness(0) invert(1); /* Modo Negativo */
             opacity: 0.9;
         }
-
-        /* Ao passar o mouse no Link, o Logo volta à cor original */
         .logo-link:hover .logo { 
-            filter: none; /* Remove o filtro de branco */
+            filter: none; /* Cor Original */
             opacity: 1;
-            transform: scale(1.03); /* Leve zoom */
+            transform: scale(1.05);
         }
 
-        /* Menu Central */
-        .main-nav ul {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
+        /* Navegação */
+        .main-nav ul { display: flex; list-style: none; gap: 30px; }
         .main-nav a {
             text-decoration: none;
             color: rgba(255,255,255,0.8);
             font-weight: 500;
-            font-size: 1rem;
             transition: 0.3s;
         }
-        .main-nav a:hover {
-            color: var(--accent-gold);
-        }
+        .main-nav a:hover { color: var(--accent-gold); }
 
-        /* Redes Sociais Direita */
-        .header-social {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
+        /* Redes Sociais */
+        .header-social { display: flex; gap: 15px; }
         .header-social a {
             color: rgba(255,255,255,0.6);
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             transition: 0.3s;
-            text-decoration: none;
         }
-        .header-social a:hover {
-            color: var(--accent-gold);
-            transform: translateY(-2px);
-        }
+        .header-social a:hover { color: var(--accent-gold); transform: translateY(-2px); }
 
-        /* Botões */
+        /* =========================================
+           4. SEÇÕES E COMPONENTES
+           ========================================= */
+        .container { width: 90%; max-width: var(--max-width); margin: 0 auto; }
+        .section-padding { padding: 100px 0; }
+
         .btn {
             display: inline-block;
             background: var(--accent-gold);
@@ -154,25 +134,22 @@
             border-radius: 8px;
             font-weight: bold;
             transition: 0.3s ease;
-            text-align: center;
-            border: none;
-            cursor: pointer;
         }
-
         .btn:hover {
             background: var(--accent-hover);
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(200, 162, 74, 0.3);
         }
 
-        /* Cards */
         .card {
             background: var(--white);
             padding: 40px;
             border-radius: var(--radius);
             border-left: 6px solid var(--accent-gold);
             box-shadow: var(--shadow);
+            transition: 0.3s;
         }
+        .card:hover { transform: translateY(-5px); }
 
         .grid-auto {
             display: grid;
@@ -188,52 +165,32 @@
             gap: 60px;
             padding: 60px 0;
         }
-
         .hero-text { flex: 1.2; }
-        .hero-text h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem; color: var(--primary-blue); }
+        .hero-text h1 { font-size: 3.5rem; line-height: 1.1; color: var(--primary-blue); margin-bottom: 1.5rem; }
         .hero-text h1 strong { color: var(--accent-gold); }
-        .hero-text p { font-size: 1.25rem; color: var(--text-light); margin-bottom: 2.5rem; }
+        .hero-text p { font-size: 1.2rem; color: var(--text-light); margin-bottom: 2.5rem; }
 
-        .hero-image { flex: 0.8; position: relative; }
+        .hero-image { flex: 0.8; }
         .hero-image img {
             width: 100%;
             border-radius: var(--radius);
-            box-shadow: 25px 25px 0 var(--accent-gold);
+            box-shadow: 20px 20px 0 var(--accent-gold);
         }
 
-        /* Seção Escura */
-        .section-dark {
-            background: var(--primary-blue);
-            color: var(--white);
-            text-align: center;
-        }
+        .section-dark { background: var(--primary-blue); color: var(--white); text-align: center; }
 
-        footer {
-            background: var(--dark-deep);
-            color: rgba(255,255,255,0.6);
-            text-align: center;
-            padding: 50px 0;
-        }
+        footer { background: var(--dark-deep); color: rgba(255,255,255,0.5); text-align: center; padding: 40px 0; }
 
         /* =========================================
-           4. RESPONSIVIDADE (MOBILE)
+           5. RESPONSIVIDADE (MOBILE)
            ========================================= */
         @media (max-width: 992px) {
-            .header-content { flex-direction: column; gap: 15px; text-align: center; padding: 10px 0; }
-            .main-nav ul { gap: 20px; font-size: 0.9rem; }
-            .header-social { margin-top: 5px; }
-
-            .hero { flex-direction: column; text-align: center; padding: 40px 0; }
+            .header-content { flex-direction: column; gap: 15px; padding: 10px 0; }
+            .hero { flex-direction: column; text-align: center; }
+            .hero-image { order: -1; margin-bottom: 30px; }
+            .hero-image img { max-width: 300px; }
             .hero-text h1 { font-size: 2.5rem; }
-            .hero-image { order: -1; margin-bottom: 40px; }
-            .hero-image img { max-width: 300px; box-shadow: 15px 15px 0 var(--accent-gold); }
             .section-padding { padding: 60px 0; }
-        }
-
-        @media (max-width: 480px) {
-            .hero-text h1 { font-size: 2rem; }
-            .btn { width: 100%; }
-            .main-nav ul { flex-wrap: wrap; justify-content: center; }
         }
     </style>
 </head>
@@ -242,9 +199,9 @@
 
     <header class="main-header">
         <div class="container header-content">
-            <a href="#" class="logo-link" title="Voltar ao início">
+            <a href="#" class="logo-link">
                 <img src="logo.png" alt="Conversa de Líder" class="logo">
-            </a >
+            </a>
 
             <nav class="main-nav">
                 <ul>
@@ -256,8 +213,8 @@
             </nav>
 
             <div class="header-social">
-                <a href="#" target="_blank" title="Siga no Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" target="_blank" title="Conecte no LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
             </div>
         </div>
     </header>
@@ -266,33 +223,29 @@
         <section class="container hero">
             <div class="hero-text reveal">
                 <h1>Liderança que <strong>converte esforço</strong> em lucro.</h1>
-                <p>Consultoria estratégica para quem cansou do operacional e quer dominar a gestão real do negócio.</p>
-                <a href="#contato" class="btn">Quero agendar uma conversa</a>
+                <p>Consultoria estratégica para executivos que desejam dominar a gestão real do negócio.</p>
+                <a href="#contato" class="btn">Agendar Conversa</a>
             </div>
             <div class="hero-image reveal reveal-delay-2">
-                <img src="foto.jpeg" alt="Mentoria Conversa de Líder">
+                <img src="foto.jpeg" alt="Emerson Reis - Conversa de Líder">
             </div>
         </section>
 
         <section id="pilares" class="section-padding">
             <div class="container">
-                <h2 class="reveal" style="text-align: center; margin-bottom: 60px; font-size: 2.2rem;">Pilares do Desenvolvimento</h2>
+                <h2 class="reveal" style="text-align: center; margin-bottom: 50px;">O que você vai desenvolver</h2>
                 <div class="grid-auto">
                     <div class="card reveal reveal-delay-1">
                         <h3>Liderança</h3>
-                        <p>Domine a arte de delegar e cobrar resultados sem perder a autoridade.</p>
+                        <p>Construção de autoridade e gestão de equipes de alta performance.</p>
                     </div>
                     <div class="card reveal reveal-delay-2">
                         <h3>Estratégia</h3>
-                        <p>Saia do "achismo" e tome decisões baseadas em dados e visão de futuro.</p>
+                        <p>Clareza para tomar decisões com impacto real no faturamento.</p>
                     </div>
                     <div class="card reveal reveal-delay-3">
                         <h3>Cultura</h3>
-                        <p>Construa um time que trabalha pelo seu negócio, não apenas pelo salário.</p>
-                    </div>
-                    <div class="card reveal reveal-delay-4">
-                        <h3>Resultados</h3>
-                        <p>Escalabilidade real com processos que funcionam sem você precisar estar presente.</p>
+                        <p>Alinhamento de valores e fortalecimento do time.</p>
                     </div>
                 </div>
             </div>
@@ -300,26 +253,26 @@
 
         <section class="section-padding section-dark">
             <div class="container reveal">
-                <h2 style="margin-bottom: 20px;">Não é apenas uma mentoria.</h2>
-                <p style="max-width: 800px; margin: 0 auto;">É a transferência de anos de experiência executiva aplicada diretamente no seu modelo de negócio atual.</p>
+                <h2>Saia do operacional confuso.</h2>
+                <p style="max-width: 700px; margin: 20px auto 0;">Assuma o controle estratégico e lidere com propósito.</p>
             </div>
         </section>
 
         <section id="metodo" class="section-padding">
             <div class="container">
-                <h2 class="reveal" style="text-align: center; margin-bottom: 60px; font-size: 2.2rem;">O Método</h2>
+                <h2 class="reveal" style="text-align: center; margin-bottom: 50px;">Nosso Método</h2>
                 <div class="grid-auto">
                     <div class="card reveal reveal-delay-1">
-                        <h3>Diagnóstico</h3>
-                        <p>Encontramos os gargalos invisíveis que travam sua empresa.</p>
+                        <h3>1. Diagnóstico</h3>
+                        <p>Entendimento técnico da sua realidade atual.</p>
                     </div>
                     <div class="card reveal reveal-delay-2">
-                        <h3>Plano de Ação</h3>
-                        <p>Um roteiro passo a passo do que deve ser feito e priorizado.</p>
+                        <h3>2. Plano</h3>
+                        <p>Roteiro estratégico com prioridades claras.</p>
                     </div>
                     <div class="card reveal reveal-delay-3">
-                        <h3>Implementação</h3>
-                        <p>Acompanhamento direto na linha de frente da execução.</p>
+                        <h3>3. Evolução</h3>
+                        <p>Acompanhamento e ajustes para crescimento contínuo.</p>
                     </div>
                 </div>
             </div>
@@ -327,9 +280,7 @@
 
         <section id="contato" class="section-padding" style="background: var(--accent-gold); text-align: center;">
             <div class="container reveal">
-                <h2 style="color: var(--dark-deep); margin-bottom: 15px;">A liderança começa com uma decisão.</h2>
-                <p style="color: var(--dark-deep); margin-bottom: 35px; font-weight: 500;">Dê o próximo passo na sua carreira ou empresa ainda hoje.</p>
-                
+                <h2 style="color: var(--dark-deep); margin-bottom: 20px;">Pronto para o próximo nível?</h2>
                 <a href="https://wa.me/5599999999999" target="_blank" class="btn" style="background: var(--primary-blue);">Falar com um especialista <i class="fab fa-whatsapp"></i></a>
             </div>
         </section>
@@ -337,26 +288,18 @@
 
     <footer>
         <div class="container">
-            <p>© 2026 - Conversa de Líder | Excelência Corporativa</p>
+            <p>© 2026 - Conversa de Líder | Emerson Reis</p>
         </div>
     </footer>
 
     <script>
-        const observerOptions = {
-            threshold: 0.15 
-        };
-
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('active');
             });
-        }, observerOptions);
+        }, { threshold: 0.15 });
 
-        document.querySelectorAll('.reveal').forEach((el) => {
-            observer.observe(el);
-        });
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
     </script>
 
 </body>
